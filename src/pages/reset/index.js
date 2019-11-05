@@ -1,8 +1,7 @@
 import React from 'react';
+import { List, InputItem } from 'antd-mobile';
 import './index.less';
-import { List, InputItem, Toast } from 'antd-mobile';
-import Link from 'umi/link';
-class MyCenter extends React.Component {
+class Reset extends React.Component {
   state = {
     isShow: false,
     type: 'password',
@@ -67,16 +66,12 @@ class MyCenter extends React.Component {
   };
   render() {
     return (
-      <div className="page-my">
-        <div className="header">
+      <div className="page-reset">
+        <div className="tab-bar">
           <i className="iconfont icon-xiangzuo"></i>
-          <span>登录</span>
-          <span>注册</span>
+          <span>重置密码</span>
         </div>
-        <div className="picture">
-          <img src="http://m.xubei.com/static/img/logo.28f0127.png" alt="" />
-        </div>
-        <div className="my-login">
+        <div className="reset">
           <List>
             <InputItem
               type="phone"
@@ -87,6 +82,14 @@ class MyCenter extends React.Component {
             >
               手机号码
             </InputItem>
+            <div className="verify">
+              <InputItem type="text" placeholder="请输入短信验证码">
+                短信验证码
+              </InputItem>
+              <div className="getCode">
+                <i>获取验证码</i>
+              </div>
+            </div>
             <div className="my-pwd">
               <InputItem
                 type={this.state.type}
@@ -95,7 +98,7 @@ class MyCenter extends React.Component {
                 value={this.state.valuePwd}
                 onChange={this.onChangePwd}
               >
-                密码
+                设置新密码
               </InputItem>
               <div className="pwdShow" onClick={this.chgeIsShow}>
                 {this.state.isShow ? (
@@ -107,17 +110,8 @@ class MyCenter extends React.Component {
             </div>
           </List>
         </div>
-        <div className="my-sub">
-          <button onClick={this.handleLogin}>登录</button>
-        </div>
-        {this.state.isLogin ? <div className="notification">{this.state.message}</div> : null}
-        <div className="forget">
-          <Link to="/reset">
-            <span>忘记密码</span>
-          </Link>
-        </div>
       </div>
     );
   }
 }
-export default MyCenter;
+export default Reset;
