@@ -7,20 +7,50 @@ class Search extends React.Component {
     hotGame: [],
     history: [],
     value: '',
+    isshow: false,
   };
-
-  setInfo = () => {
+  // pageIndex=1
+  // getGoodsDetail(a) {
+  //   axios.post('http://api8.xubei.com/b/goods/findGoodsList', {
+  //     pageIndex: this.pageIndex,
+  //     pageSize: 10,
+  //     area: '',
+  //     server: '',
+  //     businessNo: 'xubei_m',
+  //     system: 0,
+  //     timeOrderBy: '',
+  //     priceOrderBy: '',
+  //     searchText: a,
+  //     priceRange: '',
+  //   }).;
+  // }
+  setInfo = props => {
     // console.log(13);
     let value = this.state.value;
+    //页面跳转的一系列操作
+    if (value) {
+      this.props.history.push(`/goodlist?searchText=${value}`);
+    } else {
+      this.setState({
+        isshow: true,
+      });
+      setTimeout(() => {
+        this.setState({
+          isshow: false,
+        });
+      }, 2000);
+      return;
+    }
     let result = window.localStorage.getItem('keywords')
       ? JSON.parse(window.localStorage.getItem('keywords'))
       : [];
-
     if (result.indexOf(value) <= -1) {
       result.push(value);
       // result = [...result, value];
       window.localStorage.setItem('keywords', JSON.stringify(result));
     }
+    //console.log(this.props);
+
     this.getHistory();
 
     this.setState({
@@ -57,9 +87,8 @@ class Search extends React.Component {
   };
 
   render() {
-    // console.log(111);
     return (
-      <div>
+      <div className="search-root">
         <div className="search-header">
           <i className="iconfont icon-xiangzuo"></i>
           <div className="search-input">
@@ -104,6 +133,7 @@ class Search extends React.Component {
             })}
           </div>
         </div>
+        {this.state.isshow ? <div className="isshow">请输入搜索条件</div> : null}
       </div>
     );
   }
