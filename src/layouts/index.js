@@ -23,7 +23,7 @@ class SimpleIndex extends React.Component {
   }
 }
 export default props => {
-  let firstRouter = ['/my', '/serach', '/login', '/register', '/info', '/reset'];
+  let firstRouter = ['/serach', '/login', '/register', '/info', '/reset', '/fit'];
   if (firstRouter.indexOf(props.location.pathname) > -1) {
     return <SimpleIndex {...props}></SimpleIndex>;
   } else {
