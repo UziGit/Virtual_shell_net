@@ -1,0 +1,135 @@
+body,
+html {
+  height: 100%;
+}
+
+.detail-root {
+  .det-position {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    .det-header {
+      padding: 0 13px;
+      height: 39px;
+      display: flex;
+      background: #118eea;
+      align-items: center;
+      position: relative;
+      .iconfont {
+        position: absolute;
+        left: 13px;
+        font-size: 21px;
+        color: #ffffff;
+      }
+      .det-title {
+        flex: 1;
+        text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+      }
+    }
+    .det-sort {
+      display: flex;
+      height: 44px;
+      background: #f2f2f2;
+      .sort,
+      .filter {
+        height: 36px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        span {
+          color: #333;
+          font-size: 12px;
+        }
+        i {
+          color: #333;
+          font-size: 8px;
+        }
+      }
+    }
+  }
+
+  .det-content {
+    padding: 13px;
+    margin-top: 83px;
+    height: 485px;
+    overflow-y: auto;
+    .det-sort {
+      display: flex;
+      height: 44px;
+      background: #f2f2f2;
+      .sort,
+      .filter {
+        height: 36px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        span {
+          color: #333;
+          font-size: 12px;
+        }
+        i {
+          color: #333;
+          font-size: 8px;
+        }
+      }
+    }
+    ul {
+      li {
+        display: flex;
+        margin-bottom: 10px;
+        .det-img {
+          width: 90px;
+          border-radius: 5px;
+          margin-right: 5px;
+          img {
+            width: 90px;
+          }
+        }
+        .det-tit-pri {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .title {
+            color: #333333;
+            font-size: 12px;
+            height: 34px;
+            line-height: 18px;
+            overflow: hidden;
+          }
+          .adress {
+            color: #666666;
+            font-size: 12px;
+            border: 1px solid #e5e5e5;
+            border-radius: 7px;
+            padding: 2px 1px;
+            text-align: center;
+          }
+          .price {
+            display: flex;
+            justify-content: space-between;
+            height: 25px;
+            align-items: center;
+            span,
+            i {
+              font-size: 12px;
+              color: #666666;
+              em {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                color: #f01101;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
