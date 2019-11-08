@@ -1,0 +1,102 @@
+body,html{
+  height: 100%;
+}
+.Shell{
+  height: 100%;
+  .header{
+    display: flex;
+    line-height:38px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #118eea;
+    z-index: 999;
+    padding: 0 9px;
+    box-sizing: border-box;
+    a{
+      text-decoration: none;
+    }
+    .header_chat{
+      flex: 1;
+    }
+    .header_sea{
+      .searchInput{
+        line-height: 22px;
+        background: #a2b7ce;
+        border-style:none;
+        border-radius: 14px;
+        width: 238px;
+        margin: 0 9px;
+        color: #fff;
+        padding-left: 8px;
+        outline: none;
+      }
+      input::placeholder {
+        font-size: 12px;
+        color: #fff;
+      }
+    }
+    .header_Custom{
+      flex: 1;
+    }
+  }
+  .home{
+    padding-bottom: 42px;
+  }
+  .banner{
+    padding-top: 37px;
+    img{
+      height: 120px;
+      width: 100%;
+    }
+  }
+  .gameList{
+    height: 270px;
+    overflow: hidden;
+    a{
+      color:#000;
+    }
+    .game_top{
+      display: flex;
+      justify-content: space-between;
+      padding: 21px 13px 13px;
+      h2{
+        font-size: 15px;
+        font-weight: 700;
+      }
+      a{
+        text-decoration: none;
+        font-size: 12px;
+        color: #999999;
+      }
+    }
+    .all_gameList{
+      height: 216px;
+      overflow: hidden;
+      padding: 0 8px;
+      ul{
+        li{
+          height: 104px;
+          width: 72px;
+          padding: 2px;
+          float: left;
+          img{
+            width: 66px;
+            height: 66px;
+            border-radius: 15px;
+          }
+          .tit{
+            width: 60px;
+            font-size: 12px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 6px 0;
+          }
+        }
+      }
+    }
+  }
+}
