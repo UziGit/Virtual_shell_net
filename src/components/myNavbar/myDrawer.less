@@ -1,0 +1,99 @@
+.selectGoods {
+  z-index: 999;
+  width: 100%;
+  height: 35px;
+  display: flex;
+  background: #fff;
+  // position: relative;
+  position: fixed;
+  top: 38px;
+  left: 0;
+  .selectGoods_one {
+    box-sizing: border-box;
+    height: 100%;
+    font-size: 12px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e5e5e5;
+    .fwq {
+      position: absolute;
+      width: 100%;
+      height: 140px;
+      background: #fff;
+      top: 35px;
+      left: 0;
+      .more_select {
+        position: absolute;
+        top: 0px;
+        left: 0;
+        width: 76px;
+        background: #f2f2f2;
+        li {
+          border-bottom: 1px solid #fff;
+        }
+      }
+
+      .rselsect {
+        position: absolute;
+        top: 12px;
+        left: 90px;
+      }
+    }
+    .more_select {
+      width: 100%;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: #fff;
+      li {
+        height: 34px;
+        padding-left: 17px;
+        line-height: 34px;
+        color: #333;
+      }
+      .btn {
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        padding: 0px;
+        .btn1 {
+          width: 50px;
+          height: 25px;
+          border: none;
+          background: #ddd;
+          border-radius: 2px;
+          margin-right: 8px;
+        }
+        .btn2 {
+          width: 50px;
+          height: 25px;
+          border: none;
+          background: #0ea8f0;
+          border-radius: 2px;
+          margin-left: 8px;
+        }
+      }
+      .price {
+        height: 42px;
+        padding: 4.2px;
+        background: #eee !important;
+        text-align: center;
+        input {
+          width: 82px;
+          height: 22px;
+          border: none;
+          outline: none;
+          text-align: center;
+        }
+      }
+    }
+    i {
+      color: #333;
+      font-size: 12px;
+      padding-left: 8px;
+      transform: scale(0.6);
+    }
+  }
+}
