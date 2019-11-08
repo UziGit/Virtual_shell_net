@@ -59,7 +59,8 @@ class Home extends React.Component {
                     <h2>{item.name}</h2>
                     <Link
                       to={{
-                        pathname: `/goodsAll/?id=${item.id}`,
+                        pathname: `/goodsAll`,
+                        search: `?id=${item.id}`,
                       }}
                     >
                       <span>更多</span>
