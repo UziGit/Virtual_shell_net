@@ -17,4 +17,17 @@ class Index extends React.Component {
     );
   }
 }
-export default Index;
+// export default Index;
+class SimpleIndex extends React.Component {
+  render() {
+    return <div>{this.props.children}</div>;
+  }
+}
+export default props => {
+  let firstRouter = ['/my', '/serach', '/login', '/register', '/info', '/reset','/goodsdetail'];
+  if (firstRouter.indexOf(props.location.pathname) > -1) {
+    return <SimpleIndex {...props}></SimpleIndex>;
+  } else {
+    return <Index {...props}></Index>;
+  }
+}
