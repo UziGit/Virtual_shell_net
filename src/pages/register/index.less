@@ -1,0 +1,111 @@
+.page-reset {
+  background: #ffffff;
+  height: 100%;
+  .tab-bar {
+    background: #118eea;
+    height: 39px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      position: absolute;
+      left: 13px;
+    }
+  }
+  .reset {
+    padding-right: 13px;
+    .am-list {
+      .am-list-body {
+        .am-input-label {
+          font-size: 14px;
+        }
+        .am-input-control input {
+          font-size: 14px;
+        }
+        .my-pwd {
+          display: flex;
+          justify-content: space-between;
+          .pwdShow {
+            display: flex;
+            align-items: center;
+            i {
+              font-size: 20px;
+              color: #999999;
+            }
+          }
+        }
+        .verify {
+          i {
+            position: absolute;
+            left: 75%;
+            color: #118eea;
+          }
+        }
+      }
+      .am-list-body:after {
+        content: '';
+        position: absolute;
+        background-color: #ddd;
+        display: block;
+        z-index: 1;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 10%;
+        width: 90%;
+        height: 1px;
+        transform-origin: 50% 100%;
+        transform: scaleY(0.5);
+      }
+    }
+  }
+  .info {
+    font-size: 12px;
+    color: #999999;
+    margin: 8px 0 0;
+    padding-left: 15px;
+  }
+  .sub {
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin-top: 20px;
+    button {
+      font-size: 14px;
+      text-align: center;
+      height: 43px;
+      line-height: 43px;
+      background: #118eea;
+      width: 100%;
+      border: none;
+      color: #ffffff;
+    }
+  }
+  .notification {
+    width: 200px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 300px;
+    z-index: 888;
+  }
+  .item {
+    font-size: 12px;
+    padding: 20px 0 0 15px;
+    span {
+      color: #999999;
+    }
+    i {
+      color: #118eea;
+    }
+  }
+}

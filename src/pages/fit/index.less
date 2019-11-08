@@ -1,0 +1,41 @@
+.page-fit {
+  height: 100%;
+  font-size: 14px;
+  .tab-bar {
+    height: 39px;
+    background: #118eea;
+    display: flex;
+    justify-content: center;
+    color: white;
+    line-height: 39px;
+    i {
+      position: absolute;
+      left: 13px;
+    }
+  }
+  .clickItem {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    span {
+      color: #333333;
+    }
+    i {
+      color: #999999;
+    }
+    position: relative;
+  }
+  .clickItem:after {
+    content: '';
+    position: absolute;
+    background-color: #ddd;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 5%;
+    width: 95%;
+    height: 1px;
+    transform-origin: 50% 100%;
+    transform: scaleY(0.5);
+  }
+}

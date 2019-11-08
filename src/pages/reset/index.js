@@ -1,8 +1,7 @@
 import React from 'react';
 import { List, InputItem } from 'antd-mobile';
 import './index.less';
-import axios from 'axios';
-class Register extends React.Component {
+class Reset extends React.Component {
   state = {
     isShow: false,
     type: 'password',
@@ -14,8 +13,8 @@ class Register extends React.Component {
     valueCode: '',
     str: '获取验证码',
   };
-  //密码的显示和隐藏
   isOk = false;
+  //密码的显示和隐藏
   chgeIsShow = () => {
     this.setState({
       isShow: !this.state.isShow,
@@ -31,8 +30,7 @@ class Register extends React.Component {
   };
   //改变手机号的value
   onChange = value => {
-    let phoneRex = /^1(3|4|5|6|7|8|9)\d{9}$/;
-    if (!phoneRex.test(value.replace(/\s/g, ''))) {
+    if (value.replace(/\s/g, '').length < 11) {
       this.setState({
         message: '请输入正确的手机号',
         hasErr: true,
@@ -56,7 +54,6 @@ class Register extends React.Component {
   //点击登录进行判断
   handleLogin = () => {
     let { valuePwd, valuePhone, isLogin, hasErr, valueCode, str } = this.state;
-    let pwdReg = /^[0-9a-zA-Z]{6,20}$/;
     //当输入的手机号是错误的时候，提示“请输入正确的手机号”
     if (hasErr) {
       this.setState({
@@ -85,20 +82,14 @@ class Register extends React.Component {
         isLogin: true,
         message: '输入的验证码有误',
       });
-    } else if (!pwdReg.test(valuePwd)) {
-      //判断的设置的密码： 密码为6-20个英文字母，数字或符号
-      this.setState({
-        isLogin: true,
-        message: '请输入正确的密码格式',
-      });
     } else {
       this.setState({
         isLogin: true,
-        message: '注册成功',
+        message: '重置密码成功',
       });
-      this.isOk = true;
-      this.setUser();
+      this.isOK = true;
     }
+
     this.delay();
   };
   //设置2秒后，错误提示消失
@@ -107,22 +98,10 @@ class Register extends React.Component {
       this.setState({
         isLogin: false,
       });
-      if (this.isOk) {
+      if (this.isOK) {
         this.props.history.push('/login');
       }
     }, 2000);
-  }
-  //将数据存到lostorage中
-  setUser() {
-    axios
-      .post('http://localhost:3000/user', {
-        phone: this.state.valuePhone,
-        pwd: this.state.valuePwd,
-      })
-      .then(response => {
-        let result = response.data;
-        console.log(result);
-      });
   }
   judeMent() {
     let { hasErr, valuePhone, isLogin, message, valueCode } = this.state;
@@ -180,7 +159,7 @@ class Register extends React.Component {
       <div className="page-reset">
         <div className="tab-bar">
           <i className="iconfont icon-xiangzuo" onClick={this.goBack}></i>
-          <span>注册</span>
+          <span>重置密码</span>
         </div>
         <div className="reset">
           <List>
@@ -211,7 +190,7 @@ class Register extends React.Component {
                 value={this.state.valuePwd}
                 onChange={this.onChangePwd}
               >
-                密码
+                设置新密码
               </InputItem>
               <div className="pwdShow" onClick={this.chgeIsShow}>
                 {this.state.isShow ? (
@@ -228,12 +207,8 @@ class Register extends React.Component {
           <button onClick={this.handleLogin}>完成</button>
         </div>
         {this.state.isLogin ? <div className="notification">{this.state.message}</div> : null}
-        <div className="item">
-          <span> 完成注册即代表已阅读并同意</span>
-          <i>《服务条款和隐私政策》</i>
-        </div>
       </div>
     );
   }
 }
-export default Register;
+export default Reset;
