@@ -115,6 +115,9 @@ class Reset extends React.Component {
       });
       if (this.isOK) {
         this.props.history.push('/login');
+      } else {
+        console.log(this.props);
+        // this.props.history.back();
       }
     }, 2000);
   }
@@ -167,7 +170,11 @@ class Reset extends React.Component {
     });
   };
   goBack = () => {
-    this.props.history.push('/login');
+    if (this.isOK) {
+      this.props.history.push('/login');
+    } else {
+      this.props.history.goBack();
+    }
   };
   render() {
     return (

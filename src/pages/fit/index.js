@@ -23,7 +23,7 @@ class Fit extends React.Component {
           </Link>
         </div>
         <div className="clickItem">
-          <span>修改登录密码</span>
+          <span>修改支付密码</span>
           <i className="iconfont icon-icon--"></i>
         </div>
         <div className="sub">
