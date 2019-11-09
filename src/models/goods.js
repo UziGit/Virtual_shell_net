@@ -13,9 +13,11 @@ export default {
 
   reducers: {
     //初始化更新数据页面
-    setpageList(state, { page_list, totalpagenum, loading }) {
-      console.log(page_list);
-      return { ...state, page_list, totalpagenum, loading };
+    setpageList(state, { page_list, totalpagenum }) {
+      return { ...state, page_list, totalpagenum };
+    },
+    initList(state, { page_list }) {
+      return { ...state, page_list };
     },
   },
 
@@ -23,22 +25,19 @@ export default {
     *getList({ value }, { put, select }) {
       //获取上一次仓库的最新数据
       let state = yield select();
-      console.log(value, state);
-
       let res = yield axios.post('http://api8.xubei.com/b/goods/findGoodsList', {
-        pageIndex: value,
+        pageIndex: value.index,
         pageSize: '10',
-        gameId: '1109',
-        area: '',
+        gameId: value.game_id,
+        area: value.area ? value.area : '',
         server: '',
         businessNo: 'xubei_m',
-        system: '0',
-        timeOrderBy: '',
-        priceOrderBy: '',
-        priceRange: '',
+        system: value.system ? value.system : '0',
+        timeOrderBy: value.timeOrderBy ? value.timeOrderBy : '',
+        priceOrderBy: value.priceOrderBy ? value.priceOrderBy : '',
+        priceRange: value.priceRange ? value.priceRange : '',
       });
 
-      console.log(res);
       yield put({
         type: 'setpageList',
         page_list: state.goods.page_list.concat(res.data.result.list),

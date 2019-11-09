@@ -17,19 +17,19 @@ class Home extends React.Component {
         let result = response.data;
         if (result.code === 1) {
           let zg = result.result;
-          console.log(zg);
+          // console.log(zg);
 
           this.setState({
             bannerList: zg,
           });
-          console.log(this.state.bannerList);
+          // console.log(this.state.bannerList);
         }
       });
   };
 
   render() {
     // const { bannerList } = this.state
-    console.log(this.state.bannerList);
+    // console.log(this.state.bannerList);
     if (this.state.bannerList <= 0) {
       return null;
     } else {
@@ -51,8 +51,8 @@ class Home extends React.Component {
               <img src={banner} alt="" />
             </div>
             {this.state.bannerList.map((item, index) => {
-              console.log(item, index);
-              console.log(item.id);
+              // console.log(item, index);
+              // console.log(item.id);
               return (
                 <div className="gameList" key={item.id}>
                   <div className="game_top">

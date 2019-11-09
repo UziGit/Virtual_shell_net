@@ -6,6 +6,24 @@ class MySelect extends React.Component {
     isShow2: false,
     isShow3: false,
     isShow4: false,
+    input1: '',
+    input2: '',
+  };
+  //判断输入框只能是数字的正则
+  numReg = /^\d+$/;
+  chginput1 = e => {
+    if (this.numReg.test(e.target.value)) {
+      this.setState({
+        input1: e.target.value,
+      });
+    }
+  };
+  chginput2 = e => {
+    if (this.numReg.test(e.target.value)) {
+      this.setState({
+        input2: e.target.value,
+      });
+    }
   };
   bodycss = document.getElementsByTagName('body')[0];
   render() {
@@ -40,13 +58,23 @@ class MySelect extends React.Component {
                 overflow: 'hidden',
               }}
               onClick={e => {
-                console.log(e.target);
-                e.stopPropagation();
-                e.preventDefault();
+                this.props.setSystem(e.target.innerHTML);
               }}
             >
-              <li>安卓</li>
-              <li>IOS</li>
+              <li
+                onClick={() => {
+                  console.log(this.props);
+                }}
+              >
+                安卓
+              </li>
+              <li
+                onClick={() => {
+                  console.log(this.props);
+                }}
+              >
+                IOS
+              </li>
             </ol>
           </li>
 
@@ -76,6 +104,7 @@ class MySelect extends React.Component {
                 className="more_select"
                 onClick={e => {
                   console.log(e.target);
+                  this.props.setArea(e.target.innerHTML);
                   e.stopPropagation();
                   e.preventDefault();
                 }}
@@ -88,12 +117,26 @@ class MySelect extends React.Component {
               <div
                 className="rselsect"
                 onClick={e => {
-                  console.log(e.target);
                   e.stopPropagation();
                   e.preventDefault();
                 }}
               >
-                <span>全部区服</span>
+                <span
+                  onClick={
+                    //这里点击需要把这个isshow2变成false，并且发送请求
+                    () => {
+                      this.setState({
+                        isShow1: false,
+                        isShow2: !this.state.isShow2,
+                        isShow3: false,
+                        isShow4: false,
+                      });
+                      this.props.setPost();
+                    }
+                  }
+                >
+                  全部区服
+                </span>
               </div>
             </div>
           </li>
@@ -120,9 +163,9 @@ class MySelect extends React.Component {
                 overflow: 'hidden',
               }}
               onClick={e => {
-                console.log(e.target);
-                e.stopPropagation();
-                e.preventDefault();
+                this.props.setTimePrice(e.target.innerHTML);
+                // e.stopPropagation();
+                // e.preventDefault();
               }}
             >
               <li>默认排序</li>
@@ -155,18 +198,47 @@ class MySelect extends React.Component {
                 overflow: 'hidden',
               }}
               onClick={e => {
-                console.log(e.target);
+                // console.log(e.target.tagName);
                 e.stopPropagation();
                 e.preventDefault();
               }}
             >
               <li>价格范围</li>
               <li className="price">
-                <input placeholder="最低价" /> -- <input placeholder="最高价" />
+                <input placeholder="最低价" value={this.state.input1} onChange={this.chginput1} />{' '}
+                --
+                <input placeholder="最高价" value={this.state.input2} onChange={this.chginput2} />
               </li>
               <li className="btn">
-                <button className="btn1">重置</button>
-                <button className="btn2">确定</button>
+                <button
+                  className="btn1"
+                  onClick={() => {
+                    //点击这个确定按钮的时候把遮罩层去掉
+                    this.setState({
+                      isShow1: false,
+                      isShow2: false,
+                      isShow3: false,
+                      isShow4: !this.state.isShow4,
+                    });
+                  }}
+                >
+                  重置
+                </button>
+                <button
+                  className="btn2"
+                  onClick={() => {
+                    this.props.setPriceRange(this.state.input1, this.state.input2);
+                    //点击这个确定按钮的时候把遮罩层去掉
+                    this.setState({
+                      isShow1: false,
+                      isShow2: false,
+                      isShow3: false,
+                      isShow4: !this.state.isShow4,
+                    });
+                  }}
+                >
+                  确定
+                </button>
               </li>
             </ol>
           </li>

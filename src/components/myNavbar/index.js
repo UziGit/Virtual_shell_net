@@ -10,7 +10,7 @@ const NavBars = props => {
         props.history.push('/');
       }}
     >
-      穿越火线:抢占王者
+      {props.children}
     </NavBar>
   );
 };
