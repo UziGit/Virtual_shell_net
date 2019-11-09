@@ -4,6 +4,7 @@ import './info.less';
 import MyNavBar from '../../components/myNavbar';
 import MySelect from '../../components/mySelect';
 import axios from 'axios';
+import Link from 'umi/link';
 import { connect } from 'dva';
 class GoodsInfo extends React.Component {
   //默认的发请求为第一条
@@ -29,7 +30,8 @@ class GoodsInfo extends React.Component {
         <ul className="showpage" onScroll={this.onScroll}>
           {this.props.page_list.map((item, index) => {
             return (
-              <li className="eve_data" key={index}>
+              <Link to='/goodsdetail' key={index}>
+              <li className="eve_data" >
                 <a className="page_a">
                   <div className="page_img">
                     <img src={item.imageurl} alt=""></img>
@@ -48,7 +50,8 @@ class GoodsInfo extends React.Component {
                     </div>
                   </div>
                 </a>
-              </li>
+                </li>
+                </Link>
             );
           })}
         </ul>
