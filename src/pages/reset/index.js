@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, InputItem } from 'antd-mobile';
 import './index.less';
+import axios from 'axios';
 class Reset extends React.Component {
   state = {
     isShow: false,
@@ -88,10 +89,24 @@ class Reset extends React.Component {
         message: '重置密码成功',
       });
       this.isOK = true;
+      window.localStorage.setItem('userInfo', '');
+      this.setUser();
     }
 
     this.delay();
   };
+  //将数据存到localstorage
+  setUser() {
+    axios
+      .post('http://localhost:3000/user', {
+        phone: this.state.valuePhone,
+        pwd: this.state.valuePwd,
+      })
+      .then(response => {
+        let result = response.data;
+        console.log(result);
+      });
+  }
   //设置2秒后，错误提示消失
   delay() {
     setTimeout(() => {

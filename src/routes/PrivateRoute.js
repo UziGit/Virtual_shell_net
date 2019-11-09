@@ -6,7 +6,18 @@ class PrivateRoute extends React.Component {
     if (userInfo) {
       return this.props.children;
     } else {
-      return <Redirect to="/login"></Redirect>;
+      let redirect = this.props.location.pathname;
+      let search = this.props.location.search;
+      console.log(this.props.location);
+      console.log(redirect);
+      return (
+        <Redirect
+          to={{
+            pathname: '/login',
+            search: `redirect=${redirect + search}`,
+          }}
+        ></Redirect>
+      );
     }
   }
 }

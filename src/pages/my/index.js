@@ -45,7 +45,7 @@ class My extends React.Component {
             <p className="money">可用金币</p>
             <p className="yuE">0</p>
             <div className="info">
-              <Link to="/cointips">金币说明</Link>
+              <span>金币说明</span>
             </div>
           </div>
         </div>
