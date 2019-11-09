@@ -1,11 +1,12 @@
-body,html{
+body,
+html {
   height: 100%;
 }
-.Shell{
+.Shell {
   height: 100%;
-  .header{
+  .header {
     display: flex;
-    line-height:38px;
+    line-height: 38px;
     position: fixed;
     left: 0;
     top: 0;
@@ -14,17 +15,20 @@ body,html{
     z-index: 999;
     padding: 0 9px;
     box-sizing: border-box;
-    a{
+    a {
+      color: #fff;
+      font-size: 17px;
       text-decoration: none;
     }
-    .header_chat{
+    .header_chat {
       flex: 1;
+      text-align: center;
     }
-    .header_sea{
-      .searchInput{
+    .header_sea {
+      .searchInput {
         line-height: 22px;
         background: #a2b7ce;
-        border-style:none;
+        border-style: none;
         border-radius: 14px;
         width: 238px;
         margin: 0 9px;
@@ -37,57 +41,58 @@ body,html{
         color: #fff;
       }
     }
-    .header_Custom{
+    .header_Custom {
       flex: 1;
+      text-align: center;
     }
   }
-  .home{
+  .home {
     padding-bottom: 42px;
   }
-  .banner{
+  .banner {
     padding-top: 37px;
-    img{
+    img {
       height: 120px;
       width: 100%;
     }
   }
-  .gameList{
+  .gameList {
     height: 270px;
     overflow: hidden;
-    a{
-      color:#000;
+    a {
+      color: #000;
     }
-    .game_top{
+    .game_top {
       display: flex;
       justify-content: space-between;
       padding: 21px 13px 13px;
-      h2{
+      h2 {
         font-size: 15px;
         font-weight: 700;
       }
-      a{
+      a {
         text-decoration: none;
         font-size: 12px;
         color: #999999;
       }
     }
-    .all_gameList{
-      height: 216px;
+    .all_gameList {
+      height: 205px;
       overflow: hidden;
       padding: 0 8px;
-      ul{
-        li{
+      ul {
+        li {
           height: 104px;
-          width: 72px;
-          padding: 2px;
+          width: 25%;
           float: left;
-          img{
+          text-align: center;
+          img {
             width: 66px;
             height: 66px;
             border-radius: 15px;
           }
-          .tit{
-            width: 60px;
+          .tit {
+            width: 100%;
             font-size: 12px;
             text-align: center;
             overflow: hidden;
