@@ -16,6 +16,7 @@ class Register extends React.Component {
   };
   //密码的显示和隐藏
   isOk = false;
+  isGoLogin = false;
   chgeIsShow = () => {
     this.setState({
       isShow: !this.state.isShow,
@@ -91,14 +92,16 @@ class Register extends React.Component {
         isLogin: true,
         message: '请输入正确的密码格式',
       });
-    } else {
+    } else if (this.isGoLogin) {
       this.setState({
         isLogin: true,
         message: '注册成功',
       });
+      console.log(this.isGoLogin);
+    } else {
       this.isOk = true;
-      this.setUser();
     }
+    this.setUser();
     this.delay();
   };
   //设置2秒后，错误提示消失
@@ -107,21 +110,36 @@ class Register extends React.Component {
       this.setState({
         isLogin: false,
       });
-      if (this.isOk) {
-        this.props.history.push('/login');
+      if (this.isOk && this.isGoLogin) {
+        this.props.history.push('/login?redirect=/my');
       }
     }, 2000);
   }
   //将数据存到lostorage中
   setUser() {
     axios
-      .post('http://localhost:3000/user', {
-        phone: this.state.valuePhone,
-        pwd: this.state.valuePwd,
+      .get('http://localhost:3000/user', {
+        params: {
+          phone: this.state.valuePhone,
+        },
       })
       .then(response => {
-        let result = response.data;
-        console.log(result);
+        let data = response.data;
+        if (data.length > 1) {
+          this.setState({
+            isLogin: true,
+            message: '该用户名已存在',
+          });
+          this.isGoLogin = false;
+        } else {
+          axios
+            .post('http://localhost:3000/user', {
+              phone: this.state.valuePhone,
+              pwd: this.state.valuePwd,
+            })
+            .then(response => {});
+          this.isGoLogin = true;
+        }
       });
   }
   judeMent() {

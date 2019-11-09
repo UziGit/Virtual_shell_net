@@ -48,7 +48,17 @@ class MyCenter extends React.Component {
         isLogin: false,
       });
       if (this.isOk) {
-        this.props.history.push('/my');
+        let query = {};
+        let search = this.props.location.search
+          ? this.props.location.search.replace('?', '')
+          : 'redirect=/my';
+        let arr = search.split('&');
+        arr.forEach(item => {
+          let brr = item.split('=');
+          query[brr[0]] = brr[1];
+        });
+        console.log(query);
+        this.props.history.push(query.redirect);
       }
     }, 2000);
   };
@@ -58,13 +68,14 @@ class MyCenter extends React.Component {
     axios
       .get('http://localhost:3000/user', {
         params: {
-          phone: '134 5465 4765',
+          phone: valuePhone,
         },
       })
       .then(response => {
         let result = response.data;
+        console.log(result);
         if (result.length > 0) {
-          if (valuePwd != result[0].pwd) {
+          if (valuePwd != result[result.length - 1].pwd) {
             this.setState({
               isLogin: true,
               message: '用户名或者密码错误',
@@ -107,11 +118,14 @@ class MyCenter extends React.Component {
       valuePwd: value,
     });
   };
+  goBack = () => {
+    this.props.history.push('/');
+  };
   render() {
     return (
       <div className="page-my">
         <div className="header">
-          <i className="iconfont icon-xiangzuo"></i>
+          <i className="iconfont icon-xiangzuo" onClick={this.goBack}></i>
           <span>登录</span>
           <Link to="/register">
             <span>注册</span>
