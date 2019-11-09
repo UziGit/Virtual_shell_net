@@ -4,6 +4,7 @@ import './info.less';
 import MyNavBar from '../../components/myNavbar';
 import MySelect from '../../components/mySelect';
 import axios from 'axios';
+import Link from 'umi/link';
 import { connect } from 'dva';
 class GoodsInfo extends React.Component {
   state = {

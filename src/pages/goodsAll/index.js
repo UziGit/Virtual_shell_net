@@ -48,10 +48,12 @@ class GoodsMore extends React.PureComponent {
     return (
       <div className="goodAllPage">
         <div className="goodAllHeader">
-          <Link to='/'><i className="iconfont">左</i></Link>
+          <Link to='/' style={{ color: '#fff', textDecoration: 'none' }}>
+            <i className="iconfont icon-xiangzuo"></i>
+          </Link>
           <h1>租号</h1>
-          <Link to="/search">
-            <i className="iconfont">搜</i>
+          <Link to="/search"  style={{ color: '#fff', textDecoration: 'none' }}>
+            <i className="iconfont icon-sousuo"></i>
           </Link>
         </div>
         <div className="goodAllContent">
@@ -93,7 +95,7 @@ class GoodsMore extends React.PureComponent {
             {newFooterList.length > 0
               ? newFooterList[datal].map(item => {
                 return (
-                  <Link className="It" key={item.id} to={`/info/111?gameId=${item.game_id}&gameName=${item.name}&gameType=${
+                  <Link className="It" key={item.id} to={`/info/?gameId=${item.game_id}&gameName=${item.name}&gameType=${
                   item.game_type
                 }&goto_link=${item.goto_link ? item.goto_link : ''}`}>
                     <div className="footerAvater">

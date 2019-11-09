@@ -11,7 +11,7 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index:10;
+  z-index:11;
   padding-right:10px;
   padding-left:25px;
   box-sizing: border-box;
@@ -21,9 +21,10 @@
   font-size:14px;
   align-items: center;
   h1{
-    margin-left:15px;
-    text-align: center;
     font-size:14px;
+  }
+  i{
+    color:#fff
   }
 }
 .goodDetailContent{
@@ -35,7 +36,7 @@
   flex:1;
   overflow: auto;
   flex-direction: column;
-  margin-bottom:42px;
+  margin-bottom:90px;
   .contentHeader{
     background-color:#fff;
     padding:10px;
@@ -88,6 +89,9 @@
     }
     .am-carousel-wrap-dot{
       color:#118eea;
+    }
+    .slider-frame{
+      touch-action: none;
     }
   }
 
