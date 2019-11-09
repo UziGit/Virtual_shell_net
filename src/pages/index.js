@@ -9,6 +9,7 @@ class Home extends React.Component {
     this.state = {
       bannerList: [],
     };
+    this.routePush = this.routePush.bind(this);
   }
   getBannerList = () => {
     axios
@@ -17,19 +18,18 @@ class Home extends React.Component {
         let result = response.data;
         if (result.code === 1) {
           let zg = result.result;
-          console.log(zg);
 
           this.setState({
             bannerList: zg,
           });
-          console.log(this.state.bannerList);
         }
       });
   };
+  routePush(){
+    this.props.history.push('/search');
+}
 
   render() {
-    // const { bannerList } = this.state
-    console.log(this.state.bannerList);
     if (this.state.bannerList <= 0) {
       return null;
     } else {
@@ -37,13 +37,13 @@ class Home extends React.Component {
         <div className="Shell">
           <div className="header">
             <div className="header_chat">
-              <Link to="/my">哈</Link>
+              <Link to="/my" className='iconfont icon-liaotian'></Link>
             </div>
             <div className="header_sea">
-              <input type="text" placeholder="请输入关键词" className="searchInput" />
+              <input type="text" placeholder="请输入关键词" className="searchInput" onClick={this.routePush}  />
             </div>
             <div className="header_Custom">
-              <Link to="/my">哈</Link>
+              <Link to="/my" className='iconfont icon-kefu'></Link>
             </div>
           </div>
           <div className="home">
@@ -51,8 +51,6 @@ class Home extends React.Component {
               <img src={banner} alt="" />
             </div>
             {this.state.bannerList.map((item, index) => {
-              console.log(item, index);
-              console.log(item.id);
               return (
                 <div className="gameList" key={item.id}>
                   <div className="game_top">
@@ -70,8 +68,6 @@ class Home extends React.Component {
                   <div className="all_gameList">
                     <ul key={item.id}>
                       {item.content.map((items, indexs) => {
-                        // console.log(items.ids)
-                        // console.log(`${item.id}${items.id}`)
                         return (
                           <Link
                             to={{

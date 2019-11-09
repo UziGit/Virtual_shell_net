@@ -1,0 +1,33 @@
+.warp{
+  height: 100%;
+  width: 100%;
+  img{
+    height: 76%;
+    width: 100%;
+  }
+  .btnAll{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    .btn {
+      /* 默认为button 但是在<a>上依然有效 */
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+
+      /* 创造上下间距一定的空间 */
+      margin: 2px 0;
+
+      /* border透明 (当鼠标悬停时上色) */
+      border: solid 1px transparent;
+      border-radius: 4px;
+
+      /* padding大小与字体大小相关 (no width/height) */
+      padding: 0.5em 1em;
+
+      /* 确保字体颜色和背景色有足够区分度! */
+      color: #ffffff;
+      background-color: #008ed9;
+    }
+  }
+}
